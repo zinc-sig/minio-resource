@@ -39,8 +39,4 @@ COPY --from=builder /build/out /opt/resource/out
 # Make binaries executable
 RUN chmod +x /opt/resource/check /opt/resource/in /opt/resource/out
 
-# Add a non-root user for security
-RUN adduser -D -g '' resource
-USER resource
-
 WORKDIR /opt/resource
