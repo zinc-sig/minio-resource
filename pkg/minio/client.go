@@ -117,8 +117,11 @@ type DownloadResult struct {
 func (c *Client) DownloadAllObjects(ctx context.Context, destDir string, parallel int) ([]DownloadResult, error) {
 	// List all objects first
 	objects, err := c.ListObjects(ctx)
-	if err != nil {
-		return nil, err
+	for _, object := range objects {
+		if err != nil {
+			return nil, err
+		}
+		fmt.Println(object.Path)
 	}
 
 	if parallel <= 0 {
