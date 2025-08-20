@@ -121,7 +121,7 @@ func (c *Client) DownloadAllObjects(ctx context.Context, destDir string, paralle
 		if err != nil {
 			return nil, err
 		}
-		fmt.Println(object.Path)
+		fmt.Fprintf(os.Stderr, "attempting to download: %s\n", object.Path)
 	}
 
 	if parallel <= 0 {
